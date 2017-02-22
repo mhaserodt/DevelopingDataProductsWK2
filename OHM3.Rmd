@@ -1,0 +1,27 @@
+---
+title: "Delaware County Ohio Historical Markers"
+author: "Marc Haserodt"
+date: "February 22, 2017"
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE)
+library(leaflet)
+
+```
+
+##Delaware County Ohio 
+
+```{r warning = FALSE}
+clusterFrame <- read.csv("OHM.csv")
+
+clusterFrame %>%
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers(~lng, ~lat, clusterOptions = markerClusterOptions(), popup = clusterFrame$url2, label = clusterFrame$Name)
+
+```
+
+***
+
